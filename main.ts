@@ -80,4 +80,5 @@ const punctuation = [
 	"\\",
 	"±",
 	"§",
+	"“",
 ];
