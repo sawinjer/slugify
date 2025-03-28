@@ -1,84 +1,89 @@
 export const slugify = (input: string): string => {
-	const normalizedSlug = punctuation
-		.reduce((acc, punctuation) => {
-			return acc.replaceAll(punctuation, separator);
-		}, input)
-		.replaceAll(" ", "-")
-		.replaceAll(/-+/gi, "-");
+  let normalizedSlug = punctuation.reduce((acc, punctuation) => {
+    return acc.replaceAll(punctuation, separator);
+  }, input);
+  normalizedSlug = noSeparatorPunctuation.reduce((acc, punctuation) => {
+    return acc.replaceAll(punctuation, ""
+  }, normalizedSlug);
 
-	const words = normalizedSlug.split(separator);
+  normalizedSlug = normalizedSlug.replaceAll(" ", "-").replaceAll(/-+/gi, "-");
 
-	return words
-		.filter((word) => !wordsToRemove.includes(word) && word)
-		.join(separator)
-		.toLowerCase();
+  const words = normalizedSlug.split(separator);
+
+  return words
+    .filter((word) => !wordsToRemove.includes(word) && word)
+    .join(separator)
+    .toLowerCase();
 };
 
 const separator = "-";
 const wordsToRemove = [
-	"a",
-	"an",
-	"as",
-	"at",
-	"before",
-	"but",
-	"by",
-	"for",
-	"from",
-	"is",
-	"in",
-	"into",
-	"like",
-	"of",
-	"off",
-	"on",
-	"onto",
-	"per",
-	"since",
-	"than",
-	"the",
-	"this",
-	"that",
-	"to",
-	"up",
-	"via",
-	"with",
+  "a",
+  "an",
+  "as",
+  "at",
+  "before",
+  "but",
+  "by",
+  "for",
+  "from",
+  "is",
+  "in",
+  "into",
+  "like",
+  "of",
+  "off",
+  "on",
+  "onto",
+  "per",
+  "since",
+  "than",
+  "the",
+  "this",
+  "that",
+  "to",
+  "up",
+  "via",
+  "with",
 ];
+
+const noSeparatorPunctuation = ["’"];
+
 const punctuation = [
-	"'",
-	'"',
-	"”",
-	"'",
-	"`",
-	",",
-	".",
-	"_",
-	":",
-	";",
-	"|",
-	"{",
-	"}",
-	"[",
-	"]",
-	"+",
-	"=",
-	"*",
-	"&",
-	"%",
-	"^",
-	"$",
-	"#",
-	"@",
-	"!",
-	"~",
-	"(",
-	")",
-	"?",
-	"<",
-	">",
-	"/",
-	"\\",
-	"±",
-	"§",
-	"“",
+  "'",
+  '"',
+  "”",
+  "'",
+  "`",
+  ",",
+  ".",
+  "_",
+  ":",
+  ";",
+  "|",
+  "{",
+  "}",
+  "[",
+  "]",
+  "+",
+  "=",
+  "*",
+  "&",
+  "%",
+  "^",
+  "$",
+  "#",
+  "@",
+  "!",
+  "~",
+  "(",
+  ")",
+  "?",
+  "<",
+  ">",
+  "/",
+  "\\",
+  "±",
+  "§",
+  "“",
 ];
