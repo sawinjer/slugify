@@ -3,7 +3,7 @@ export const slugify = (input: string): string => {
     return acc.replaceAll(punctuation, separator);
   }, input);
   normalizedSlug = noSeparatorPunctuation.reduce((acc, punctuation) => {
-    return acc.replaceAll(punctuation, ""
+    return acc.replaceAll(punctuation, "");
   }, normalizedSlug);
 
   normalizedSlug = normalizedSlug.replaceAll(" ", "-").replaceAll(/-+/gi, "-");
