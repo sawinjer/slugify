@@ -1,10 +1,7 @@
 export const slugify = (input: string): string => {
   let normalizedSlug = punctuation.reduce((acc, punctuation) => {
-    return acc.replaceAll(punctuation, separator);
-  }, input);
-  normalizedSlug = noSeparatorPunctuation.reduce((acc, punctuation) => {
     return acc.replaceAll(punctuation, "");
-  }, normalizedSlug);
+  }, input);
 
   normalizedSlug = normalizedSlug.replaceAll(" ", "-").replaceAll(/-+/gi, "-");
 
@@ -47,8 +44,6 @@ const wordsToRemove = [
   "with",
 ];
 
-const noSeparatorPunctuation = ["’"];
-
 const punctuation = [
   "'",
   '"',
@@ -86,4 +81,5 @@ const punctuation = [
   "±",
   "§",
   "“",
+  "’",
 ];
