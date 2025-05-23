@@ -5,12 +5,24 @@ export const slugify = (input: string): string => {
 
   normalizedSlug = normalizedSlug.replaceAll(" ", "-").replaceAll(/-+/gi, "-");
 
+  for (const entry of Object.entries(specialCharacter)) {
+    const [charToMatch, charToReplaceWith] = entry;
+
+    normalizedSlug = normalizedSlug.replaceAll(charToMatch, charToReplaceWith);
+  }
+
   const words = normalizedSlug.split(separator);
 
   return words
     .filter((word) => !wordsToRemove.includes(word) && word)
     .join(separator)
     .toLowerCase();
+};
+
+const specialCharacter = {
+  ä: "a",
+  ü: "u",
+  ö: "o",
 };
 
 const separator = "-";
