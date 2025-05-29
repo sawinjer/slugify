@@ -7,5 +7,5 @@ Deno.test(function addTest() {
     slugify("The Netherlands named in top 10 for world’s friendliest drivers"),
     "the-netherlands-named-top-10-worlds-friendliest-drivers",
   );
-  assertEquals(slugify("Mädchen Hüte schön"), "madchen-hute-schon");
+  assertEquals(slugify("Ää-Ëë-Ïï-Öö-Üü"), "aa-ee-ii-oo-uu");
 });
